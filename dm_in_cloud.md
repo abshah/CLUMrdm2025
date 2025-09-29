@@ -137,7 +137,7 @@ We will download some more data to play around with:
 **Attention**: You will download a large file (approx 14 GiB)
 
 ``` bash
-mc cp aws/sra-pub-run-odp/sra/ERR14244221/ERR14244221 ./
+mc cp --recursive aws/sra-pub-run-odp/sra/ERR14244221 ./
 ```
 
 4. Using a object storage container
@@ -147,25 +147,23 @@ Navigate to the **Container** entry under the **Object Store** menu
 entry. Note: All containers here are visible to all project members, as
 those containers in openstack are bound to the project
 
-![](figures/TODO)
-
 This container is empty, but we can show it nevertheless on the command
 line using the minio client:
 
 ``` bash
-mc ls ibworkshop
+mc ls clumRDM251
 ```
 
 This should show you your previously created bucket (container) name
 (next to all others). You can now upload data into it.
 
 ``` bash
-mc cp *.fastq.gz ibworkshop/YOUR_CONTAINER_NAME
-mc ls ibworkshop/YOUR_CONTAINER_NAME
+mc cp *.fastq.gz clumRDM251/YOUR_CONTAINER_NAME
+mc ls clumRDM251/YOUR_CONTAINER_NAME
 ```
 
 Tip: You can enable auto completion for the minio client. After
-activiation, the shell needs to be restartet, though.
+activiation, the shell needs to be restarted, though.
 
 ``` bash
 mc --autocompletion
