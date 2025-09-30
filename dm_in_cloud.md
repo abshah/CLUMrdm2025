@@ -169,7 +169,7 @@ activiation, the shell needs to be restarted, though.
 mc --autocompletion
 ```
 
-## Transferring your data into the cloud
+## Section 4: Transferring your data into the cloud
 
 As expected, you may want to upload or transfer data from your local (or remote) machine into a SimpleVM instance or any other virtual machine, then `scp` and `rsync` are your friends.
 
