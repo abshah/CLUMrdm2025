@@ -16,6 +16,20 @@ sudo apt update
 sudo apt upgrade
 sudo apt install python3-openstackclient
 ```
+ Additionally, we will install a small helper tool to access S3 storage directly:
+ 
+   ``` bash
+   wget https://dl.min.io/client/mc/release/linux-amd64/mc
+   ```
+   Move it to a folder where other binaries usually are stored:
+   ``` bash
+   sudo mv mc /usr/local/bin/
+   ```
+   Change file permissions:
+   ``` bash
+   sudo chmod a+x /usr/local/bin/mc
+   ```
+
 ## Section 2: Create a volume to store data
 
 1. Inspect what block storage is available on your virtual instance by typing:
@@ -122,6 +136,10 @@ We will now configure the S3 minio client:
 
 ``` bash
 mc alias set clumRDM251 https://openstack.cebitec.uni-bielefeld.de:8080/ <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY>
+```
+In addition, we Want to tell minio where the public AWS cloud storage can be accessed and what the access key and secret is.
+``` bash
+mc alias set aws https://s3.amazonaws.com "" ""
 ```
 
 3. Uploading data to the Object Storage
