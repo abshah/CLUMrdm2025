@@ -142,16 +142,14 @@ In addition, we Want to tell minio where the public AWS cloud storage can be acc
 mc alias set aws https://s3.amazonaws.com "" ""
 ```
 
-3. Uploading data to the Object Storage
+3. Downloading some example data from the public AWS storage
 
-We will now use the minio client to upload some data. In the guacamole
+We will now use the minio client to download some data. In the guacamole
 SimpleVM instance, type:
 
 ``` bash
 cd /mnt/volume
 ```
-
-We will download some more data to play around with:
 **Attention**: You will download a large file (approx 14 GiB)
 
 ``` bash
