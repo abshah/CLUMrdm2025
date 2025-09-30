@@ -181,11 +181,13 @@ The basic context of `scp` goes somewhat like this
 
 scp [option(s)] source destination
 
-More specifically, like this:
+However, this has to modifies and adapted to our systems. More specifically, like this:
 
 ```bash
-scp -P Your_port -i /path/to/your/identity_file, optional /path/to/your/source_file user@destination_machine:/path/to/your/destination_file
+scp -P Your_port -i /path/to/your/identity_file /path/to/your/source_file user@destination_machine:/path/to/your/destination_file
 ```
+
+
 
 2. Using rsync to transfer many files
 `rsync` is a powerful and efficient tool for copying and synchronizing files and directories between your local machine and a remote server (like your SimpleVM in the cloud), or between two remote servers. It is especially useful when you want to transfer large amounts of data or keep directories in sync, because it only transfers the differences between source and destination. It also provides advanced features such as resuming interrupted transfers and just copying the files that have changed. It can also check for integratity to tranferred files, thereby minimizing the risk of data loss due to corruption. In the IT domain, it is also commonly used for unsupervised and regular automated backups at scale.
