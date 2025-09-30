@@ -1,7 +1,7 @@
-# Data Management in the de.NBI cloud
+# Data Management in the de.NBI cloud Part 1
 
 This assumes that you are familiar with the de.NBI cloud platform and have setup your account and ssh keys.
-We also assume that you are familiar with basic operations such as launching VMs, setting and containers.
+We also assume that you are familiar with basic operations such as launching VMs,volumes and containers. However, we will briefly also cover them.
 
 ## Section 1: Create a new VM
 
@@ -16,20 +16,6 @@ sudo apt update
 sudo apt upgrade
 sudo apt install python3-openstackclient
 ```
- Additionally, we will install a small helper tool to access S3 storage directly:
- 
-   ``` bash
-   wget https://dl.min.io/client/mc/release/linux-amd64/mc
-   ```
-   Move it to a folder where other binaries usually are stored:
-   ``` bash
-   sudo mv mc /usr/local/bin/
-   ```
-   Change file permissions:
-   ``` bash
-   sudo chmod a+x /usr/local/bin/mc
-   ```
-
 ## Section 2: Create a volume to store data
 
 1. Inspect what block storage is available on your virtual instance by typing:
@@ -111,7 +97,7 @@ without error, you are ready to proceed.
 
 ``` bash
 openstack project list
-openstack prject show clumRDM251
+openstack project show clumRDM251
 ```
 
 2. Creating S3 credentials
@@ -137,19 +123,17 @@ We will now configure the S3 minio client:
 ``` bash
 mc alias set clumRDM251 https://openstack.cebitec.uni-bielefeld.de:8080/ <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY>
 ```
-In addition, we Want to tell minio where the public AWS cloud storage can be accessed and what the access key and secret is.
-``` bash
-mc alias set aws https://s3.amazonaws.com "" ""
-```
 
-3. Downloading some example data from the public AWS storage
+3. Uploading data to the Object Storage
 
-We will now use the minio client to download some data. In the guacamole
+We will now use the minio client to upload some data. In the guacamole
 SimpleVM instance, type:
 
 ``` bash
 cd /mnt/volume
 ```
+
+We will download some more data to play around with:
 **Attention**: You will download a large file (approx 14 GiB)
 
 ``` bash
@@ -184,3 +168,48 @@ activiation, the shell needs to be restarted, though.
 ``` bash
 mc --autocompletion
 ```
+
+## Transferring your data into the cloud
+
+As expected, you may want to upload or transfer data from your local (or remote) machine into a SimpleVM instance or any other virtual machine, then `scp` and `rsync` are your friends.
+
+1. Using `scp` to transfer file(s).
+
+`scp` stands for "secure copy." It is a simple command-line tool that lets you copy files or folders from your own computer to a virtual machine (like SimpleVM), or the other way around, over the network or locally to another user. It works a lot like the `cp` command, but it can transfer files between different computers securely. However, this tool is cumbersome to use to transfer many files or large datasets.
+
+The basic context of `scp` goes somewhat like this
+
+scp [option(s)] source destination
+
+More specifically, like this:
+
+```bash
+scp -P Your_port -i /path/to/your/identity_file, optional /path/to/your/source_file user@destination_machine:/path/to/your/destination_file
+```
+
+2. Using rsync to transfer many files
+`rsync` is a powerful and efficient tool for copying and synchronizing files and directories between your local machine and a remote server (like your SimpleVM in the cloud), or between two remote servers. It is especially useful when you want to transfer large amounts of data or keep directories in sync, because it only transfers the differences between source and destination. It also provides advanced features such as resuming interrupted transfers and just copying the files that have changed. It can also check for integratity to tranferred files, thereby minimizing the risk of data loss due to corruption. In the IT domain, it is also commonly used for unsupervised and regular automated backups at scale.
+
+The command syntax of `rsync` is similar to `scp`. You can also pass extra `ssh` options to `rsync` (see below for examples).
+
+```bash
+rsync [OPTIONS] source_folder_or_file destination_folder_or_file 
+```
+For example to copy entire directories between instances, enable compression to save network bandwidth, and exclude specific file types.
+
+```bash
+# Sync directories between instances
+rsync -avz -e "ssh -p YOUR_PORT" ubuntu@YOUR_VM_IP:/mnt/volume/data/  ubuntu@YOUR_OTHER_VM_IP:/PATH/TO/data
+
+# Transfer with compression and progress
+rsync -avzP -e "ssh -p YOUR_PORT" ~/large_dataset/ ubuntu@YOUR_VM_IP:/mnt/volume/
+
+# Exclude certain file types.
+rsync -avz --exclude="*.tmp" --exclude="*.log" -e "ssh -p YOUR_PORT" ~/data/ ubuntu@YOUR_VM_IP:/mnt/volume/
+
+# Maximize compression during transfer to reduce network costs and load.
+rsync -avz --compress-level=9 -e "ssh -p YOUR_PORT" ~/data/ ubuntu@YOUR_VM_IP:/mnt/volume/
+```
+
+
+
