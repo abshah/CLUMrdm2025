@@ -132,9 +132,12 @@ SimpleVM instance, type:
 ``` bash
 cd /mnt/volume
 ```
+Next we need to tell minio where the AWS cloud storage can be accessed and what
+   the access key and secret is.
+   ``` bash
+   mc alias set aws https://s3.amazonaws.com "" ""
 
 We will download some more data to play around with:
-**Attention**: You will download a large file (approx 14 GiB)
 
 ``` bash
 mc cp --recursive aws/sra-pub-run-odp/sra/SRR29032800 ./
