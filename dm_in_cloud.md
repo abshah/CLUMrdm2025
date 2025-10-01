@@ -136,7 +136,7 @@ We will download some more data to play around with:
 **Attention**: You will download a large file (approx 14 GiB)
 
 ``` bash
-mc cp --recursive aws/sra-pub-run-odp/sra/ERR14244221 ./
+mc cp --recursive aws/sra-pub-run-odp/sra/SRR29032800 ./
 ```
 
 4. Using a object storage container
