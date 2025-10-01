@@ -42,6 +42,13 @@ Modify the permissions of the credentials file with appropriate file permissions
 chmod 600 ${HOME}/.passwd-s3fs
 ```
 
+Allow non-root users to read and write to the mount.
+
+```bash
+sudo sed -i 's/^#user_allow_other/user_allow_other/' /etc/fuse.conf
+```
+
+
 3. Create the mount point.
 
 Similar to mounting a volume, we will also create a new directory and set permissions.
