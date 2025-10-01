@@ -120,6 +120,7 @@ openstack --os-identity-api-version 3 ec2 credentials list
 We will now configure the S3 minio client:
 
 ``` bash
+conda activate denbi
 mc alias set clumRDM251 https://openstack.cebitec.uni-bielefeld.de:8080/ <YOUR-ACCESS-KEY> <YOUR-SECRET-KEY>
 ```
 
