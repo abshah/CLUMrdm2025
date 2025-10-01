@@ -1,6 +1,6 @@
 # CLUMrdm2025: Data Management in de.NBI Cloud Workshop
 
-The de.NBI and de.KCD Cloud User Meeting: Best RDM practices in de.NBI cloud workshop aims to provide an introduction to data management methods in the de.NBI cloud infrastructure.
+The de.NBI and de.KCD Cloud User Meeting: Data management in de.NBI cloud workshop aims to provide an introduction to data management methods in the de.NBI cloud infrastructure.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ The workshop is designed for researchers and scientists who need to manage large
 
 ### Part 1: Core Data Management
 
-**File:** [`dm_in_cloud.md`](dm_in_cloud.md)
+[`Part 1`](dm_in_cloud.md)
 
 This tutorial covers the fundamental aspects of data management in the de.NBI cloud platform. Topics include:
 
@@ -51,11 +51,11 @@ This tutorial covers the fundamental aspects of data management in the de.NBI cl
    - Using `rsync` for efficient bulk data synchronization
 
 
-### Part 2: Advanced Storage Solutions
+### Part 2: Using s3fs to mount containers to VMs
 
-**File:** [`dm_in_the_cloud_part2.md`](dm_in_the_cloud_part2.md)
+[`Part 2`](dm_in_the_cloud_part2.md)
 
-This tutorial focuses on mounting S3-compatible object storage directly to virtual machines using FUSE. Topics include:
+This tutorial focuses on mounting S3-compatible object storage directly to virtual machines using s3fs-FUSE. Topics include:
 
 1. **Installing s3fs-fuse**
    - Package installation on Ubuntu-based SimpleVM instances

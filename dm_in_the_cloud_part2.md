@@ -1,7 +1,5 @@
 # Data Management in the de.NBI cloud Part 2
 
-
-
 ## Using s3fs-fuse to mount a S3 container to a virtual machine
 
 1. Installing s3fs in your virtual machine.
