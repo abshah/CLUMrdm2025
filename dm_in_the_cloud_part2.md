@@ -22,13 +22,13 @@ List your openstack credentials as we did previously using
 openstack --os-identity-api-version 3 ec2 credentials list
 ```
 
-If you encounter an error, you need to re-run the script we downloaded from the Horizon Openstack interface. 
+If you encounter an error, you may need to re-run the script we downloaded from the Horizon Openstack interface.
 
 ```bash
 source ~/.config/openstack/*.sh
 ```
 
-Use the listed access key and secret from our workshop project. If you are part of multiple simpleVM projects, be sure to pick the correct one. 
+Use the listed access key and secret from our workshop project. If you are part of multiple simpleVM projects, be sure to pick the correct one.
 
 
 ```bash
@@ -74,7 +74,7 @@ s3fs YOUR_CONTAINER /mnt/s3 \
 
 5. Verify the mount
 
-Try writing a small file to confirm permissions and configuration. You will need to do so from another terminal as your current terminal is running s3fs
+Write a small file to confirm permissions and configuration. You will need to do so from another terminal as your current terminal is running s3fs.
 
 ```bash
 echo "hello" > /mnt/s3/s3fs_test.txt
@@ -95,7 +95,7 @@ sudo chmod 600 /etc/passwd-s3fs
 Add a new entry to your `/etc/fstab` file. 
 
 ```bash
-MY_CONTAINER /mnt/s3 fuse.s3fs _netdev,allow_other,use_path_request_style,url=URL,passwd_file=/etc/passwd-s3fs,uid=1000,gid=1000,umask=0022,x-systemd.requires=network-online.target,x-systemd.automount 0 0
+MY_CONTAINER /mnt/s3 fuse.s3fs _netdev,allow_other,use_path_request_style,url=https://openstack.cebitec.uni-bielefeld.de:8080,passwd_file=/etc/passwd-s3fs,uid=1000,gid=1000,umask=0022,x-systemd.requires=network-online.target,x-systemd.automount 0 0
 ```
 
 Apply changes without rebooting
