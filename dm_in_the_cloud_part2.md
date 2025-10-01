@@ -65,7 +65,7 @@ We shall run s3fs in an interactive environment to see if it can run without err
 ```bash
 s3fs YOUR_CONTAINER /mnt/s3 \
   -o passwd_file=${HOME}/.passwd-s3fs \
-  -o url=URL \
+  -o url=https://openstack.cebitec.uni-bielefeld.de:8080 \
   -o use_path_request_style \
   -o allow_other \
   -o uid=$(id -u) -o gid=$(id -g) \

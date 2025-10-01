@@ -9,7 +9,6 @@ The de.NBI and de.KCD Cloud User Meeting: Best RDM practices in de.NBI cloud wor
   - [Part 1: Core Data Management](#part-1-core-data-management)
   - [Part 2: Advanced Storage Solutions](#part-2-advanced-storage-solutions)
 - [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
 - [Workshop Organizers](#workshop-organizers)
 
 ---
@@ -18,7 +17,7 @@ The de.NBI and de.KCD Cloud User Meeting: Best RDM practices in de.NBI cloud wor
 
 This workshop provides hands-on training for managing data in the de.NBI (German Network for Bioinformatics Infrastructure) cloud platform. Participants will learn practical skills for working with various storage solutions, including block storage volumes and object storage containers.
 
-The workshop is designed for researchers and scientists who need to manage large datasets in cloud environments, with a focus on bioinformatics applications.
+The workshop is designed for researchers and scientists who need to manage large datasets in the de.NBI cloud environment.
 
 ---
 
@@ -50,7 +49,7 @@ This tutorial covers the fundamental aspects of data management in the de.NBI cl
 4. **Section 4: Transferring your data into the cloud**
    - Using `scp` for secure file transfers
    - Using `rsync` for efficient bulk data synchronization
-   - Advanced `rsync` options for compression and selective transfers
+
 
 ### Part 2: Advanced Storage Solutions
 
@@ -75,8 +74,7 @@ This tutorial focuses on mounting S3-compatible object storage directly to virtu
 
 5. **Configuring automatic mounting**
    - Setting up persistent mounts via `/etc/fstab`
-   - Configuring systemd for automatic mounting at boot
-   - Managing mount options for optimal performance
+   - Configuring your machine for automatic container mounting at boot
 
 ---
 
