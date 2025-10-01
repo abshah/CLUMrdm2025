@@ -134,8 +134,10 @@ cd /mnt/volume
 ```
 Next we need to tell minio where the AWS cloud storage can be accessed and what
    the access key and secret is.
-   ``` bash
+
+``` bash
    mc alias set aws https://s3.amazonaws.com "" ""
+```
 
 We will download some more data to play around with:
 
